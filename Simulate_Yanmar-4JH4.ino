@@ -1,5 +1,9 @@
 #include <CAN.h>
 
+// Define CAN controller pinout
+const int canTxPin = 16; // Pin for CAN TX
+const int canRxPin = 17; // Pin for CAN RX
+
 // Define J1939 PGNs (Parameter Group Numbers) for engine data
 #define ENGINE_SPEED_PGN 61444
 #define COOLANT_TEMPERATURE_PGN 65260
@@ -25,8 +29,8 @@ unsigned long lastEngineRunHoursTransmission = 0;
 unsigned long lastAlternatorTransmission = 0;
 
 void setup() {
-  // Initialize CAN bus at 500 kbps
-  CAN.begin(500E3);
+  // Initialize CAN bus with specified pinout
+  CAN.begin(500E3, canTxPin, canRxPin);
 }
 
 void loop() {
