@@ -22,9 +22,15 @@ The sketch uses the CAN library to send J1939 messages over the CAN bus. It incl
 - **Engine Run Hours**: Sent every 10 seconds.
 - **Alternator Voltage** and **Alternator Current**: Sent every 10 seconds.
 
+## CAN Controller Pinout
+
+The sketch uses the following pinout for the CAN controller:
+- CAN TX Pin: 16
+- CAN RX Pin: 17
+
 ## How It Works
 
-1. The sketch initializes the CAN bus at a baud rate of 500 kbps.
+1. The sketch initializes the CAN bus at a baud rate of 500 kbps with the specified pinout.
 2. In the `loop()` function, the engine operation is simulated using the `simulateEngine()` function.
 3. Engine data is sent periodically based on the specified intervals using separate functions for each type of data (`sendEngineSpeed()`, `sendCoolantTemperature()`, `sendOilTemperature()`, `sendEngineRunHours()`, `sendAlternatorData()`).
 4. Timing of data transmission is managed using `millis()` to track elapsed time since the last transmission of each type of data.
